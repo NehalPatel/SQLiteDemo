@@ -68,12 +68,25 @@
         android:layout_marginTop="8dp"
         android:onClick="addNewStudent"
         android:text="Add New"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnDeleteAll"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etPhoneNumber" />
 
+    <Button
+        android:id="@+id/btnDeleteAll"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:onClick="deleteAllStudents"
+        android:text="Delete All"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/btnAddNew"
+        app:layout_constraintTop_toBottomOf="@+id/etPhoneNumber" />
+
     <LinearLayout
-        android:id="@+id/studentListView"
+
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -83,6 +96,12 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnAddNew"></LinearLayout>
+        app:layout_constraintTop_toBottomOf="@+id/btnAddNew">
+
+        <ListView
+            android:id="@+id/studentListView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

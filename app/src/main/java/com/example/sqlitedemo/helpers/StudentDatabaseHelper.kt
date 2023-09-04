@@ -58,6 +58,13 @@ class StudentDatabaseHelper(context: Context) :
         db.close()
         return students
     }
+
+    fun deleteAllStudents() {
+        val db = writableDatabase
+        //truncate table
+        db.execSQL("DELETE FROM $TABLE_NAME")
+        db.close()
+    }
 }
 
 data class Student(

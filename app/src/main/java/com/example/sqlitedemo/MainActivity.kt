@@ -21,27 +21,62 @@ class MainActivity : AppCompatActivity() {
         loadStudentData()
     }
 
+    private fun clearEditTexts(){
+        val name = findViewById<EditText>(R.id.etStudentName)
+        val email = findViewById<EditText>(R.id.etStudentEmail)
+        val phoneNumber = findViewById<EditText>(R.id.etPhoneNumber)
+
+        name.text.clear()
+        email.text.clear()
+        phoneNumber.text.clear()
+    }
+
     private fun loadStudentData(){
 
         databaseHelper = StudentDatabaseHelper(this)
 
-//        val studentListView = findViewById<ListView>(R.id.studentListView)
-        val studentListView = findViewById<View>(R.id.studentListView)
+        val studentListView = findViewById<ListView>(R.id.studentListView)
 
         val studentList = databaseHelper.getAllStudents()
 
         val adapter = StudentAdapter(this, studentList)
-        //studentListView.adapter = adapter
+        studentListView.adapter = adapter
+        adapter.notifyDataSetChanged()
     }
 
     fun addNewStudent(view: View) {
-        val name = findViewById<EditText>(R.id.etStudentName).text.toString()
-        val email = findViewById<EditText>(R.id.etStudentEmail).text.toString()
-        val phoneNumber = findViewById<EditText>(R.id.etPhoneNumber).text.toString()
+        val name = findViewById<EditText>(R.id.etStudentName)
+        val email = findViewById<EditText>(R.id.etStudentEmail)
+        val phoneNumber = findViewById<EditText>(R.id.etPhoneNumber)
 
-        databaseHelper.addStudent(name, email, phoneNumber)
+        var isValid: Boolean = true
 
-        Toast.makeText(this, "Student added!", Toast.LENGTH_SHORT).show()
+        if (name.text.toString().isEmpty()) {
+            name.error = "This name is required"
+            isValid = false
+        }
 
+        if (email.text.toString().isEmpty()) {
+            email.error = "This email is required"
+            isValid = false
+        }
+
+        if (phoneNumber.text.toString().isEmpty()) {
+            phoneNumber.error = "This phone number is required"
+            isValid = false
+        }
+
+        if (isValid) {
+            databaseHelper.addStudent(name.text.toString(), email.text.toString(), phoneNumber.text.toString())
+
+            Toast.makeText(this, "Student added!", Toast.LENGTH_SHORT).show()
+            loadStudentData()
+            clearEditTexts()
+        }
+    }
+
+    fun deleteAllStudents(view: View) {
+        databaseHelper.deleteAllStudents()
+        loadStudentData()
     }
 }

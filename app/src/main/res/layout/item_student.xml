@@ -11,7 +11,7 @@
         android:layout_width="200dp"
         android:layout_height="100dp"
         android:layout_weight="1"
-        tools:srcCompat="@tools:sample/avatars" />
+        tools:srcCompat="@drawable/user_placeholder" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -49,12 +49,14 @@
                 android:id="@+id/btnUpdate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:minHeight="48dp"
                 android:text="Update" />
 
             <Button
                 android:id="@+id/btnDelete"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:minHeight="48dp"
                 android:text="Delete" />
 
         </LinearLayout>
