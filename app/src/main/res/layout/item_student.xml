@@ -6,16 +6,9 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="200dp"
-        android:layout_height="100dp"
-        android:layout_weight="1"
-        tools:srcCompat="@drawable/user_placeholder" />
-
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_weight="1"
         android:paddingStart="10dp"
         android:orientation="vertical">
@@ -40,26 +33,27 @@
             android:layout_height="wrap_content"
             android:text="Student Phone" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <!-- Small clickable icon button for Update -->
+        <ImageButton
+            android:id="@+id/btnUpdate"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:src="@android:drawable/ic_menu_edit"
+            android:contentDescription="Update" />
 
-            <Button
-                android:id="@+id/btnUpdate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:minHeight="48dp"
-                android:text="Update" />
-
-            <Button
-                android:id="@+id/btnDelete"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:minHeight="48dp"
-                android:text="Delete" />
-
-        </LinearLayout>
+        <!-- Small clickable icon button for Delete -->
+        <ImageButton
+            android:id="@+id/btnDelete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@android:drawable/ic_menu_delete"
+            android:contentDescription="Delete" />
 
     </LinearLayout>
 </LinearLayout>
